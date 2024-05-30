@@ -18,7 +18,7 @@ INSERT INTO personas (
   "Av. Argentina 123"
 )
 
-INSERT INTO chofer (
+INSERT INTO choferes (
   tipoDoc,
   nroDocumento,
   legajo,
@@ -29,3 +29,11 @@ INSERT INTO chofer (
   "Legajo123",
   "D-2"
 )
+
+-- b) update
+
+UPDATE viajes
+SET horaPartida = 18:00:00
+WHERE fecha = 2022-06-24
+
+-- c) delete
