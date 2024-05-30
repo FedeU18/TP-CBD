@@ -105,3 +105,15 @@ CREATE TABLE pasaje (
       ON UPDATE cascade
       ON DELETE restrict,
 );
+
+CREATE TABLE prefiere (
+  tipoDocPasajero varchar(11),
+  nroDocumentoPasajero int,
+  codCiudad int,
+  motivo varchar(200),
+  PRIMARY KEY (tipoDocPasajero,nroDocumentoPasajero,codCiudad),
+  FOREIGN KEY (tipoDocPasajero, nroDocumentoPasajero)
+    REFERENCES pasajeros (tipoDoc, nroDocumento)
+      ON UPDATE cascade
+      ON DELETE restrict,
+);
