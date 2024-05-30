@@ -9,13 +9,13 @@ INSERT INTO personas (
   telefono,
   direccion
 ) VALUES (
-  "DNI",
+  'DNI',
   12345678,
-  "Fernandez",
-  "Patricio",
+  'Fernandez',
+  'Patricio',
   2001-05-05,
   2994561234,
-  "Av. Argentina 123"
+  'Av. Argentina 123'
 )
 
 INSERT INTO choferes (
@@ -24,10 +24,10 @@ INSERT INTO choferes (
   legajo,
   categoria
 ) VALUES (
-  "DNI",
+  'DNI',
   12345678,
-  "Legajo123",
-  "D-2"
+  'Legajo123',
+  'D-2'
 )
 
 -- b) update
@@ -37,3 +37,11 @@ SET horaPartida = 18:00:00
 WHERE fecha = 2022-06-24
 
 -- c) delete
+
+DELETE FROM choferes
+WHERE NOT EXISTS (
+  SELECT tipoDocChofer, nroDocumentoChofer 
+  FROM colectivos
+  WHERE choferes.tipoDoc = colectivos.tipoDocChofer 
+  AND choferes.nroDocumento = colectivos.nroDocumentoChofer
+)
