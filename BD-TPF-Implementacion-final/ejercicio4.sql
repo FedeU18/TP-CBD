@@ -23,7 +23,7 @@ WHERE p.NroAsiento = a.nroAsiento)
 
 SELECT codCiudadOrigen, ciudades.nombre, COUNT(codCiudadOrigen) AS CantVIajes
 FROM viajes JOIN ciudades ON viajes.codCiudadOrigen = ciudades.codigo
-WHERE viajes.fecha >= '2024-01-01' AND viajes.fecha <= '2024-12-31'
+WHERE viajes.fecha >= '2022-01-01' AND viajes.fecha <= '2022-12-31'
 GROUP BY codCiudadOrigen , ciudades.nombre;
 
 /* EJ 4D */
@@ -33,7 +33,6 @@ GROUP BY codCiudadOrigen , ciudades.nombre;
 
 SELECT fechaEmision, COUNT(numeroPasaje) AS cant
 FROM pasaje JOIN viajes ON pasaje.idViaje = viajes.idViaje
-JOIN ciudades ON viajes.codCiudadDestino = ciudades.codigo
-WHERE viajes.fecha >= '2024-04-01' AND viajes.fecha <= '2025-04-30'
-AND ciudades.nombre IN ('Cordoba')
+WHERE viajes.fecha >= '2022-04-01' AND viajes.fecha <= '2022-04-30'
+AND viajes.codCiudadDestino IN (SELECT codigo FROM ciudades WHERE nombre = "Neuquen Capital")
 GROUP BY pasaje.fechaEmision;
