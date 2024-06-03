@@ -34,5 +34,5 @@ GROUP BY codCiudadOrigen , ciudades.nombre;
 SELECT fechaEmision, COUNT(numeroPasaje) AS cant
 FROM pasaje JOIN viajes ON pasaje.idViaje = viajes.idViaje
 WHERE viajes.fecha >= '2022-04-01' AND viajes.fecha <= '2022-04-30'
-AND viajes.codCiudadDestino IN (SELECT codigo FROM ciudades WHERE nombre = "Neuquen Capital")
+AND viajes.codCiudadDestino IN (SELECT codigo FROM ciudades WHERE nombre = 'Neuquen Capital')
 GROUP BY pasaje.fechaEmision;
